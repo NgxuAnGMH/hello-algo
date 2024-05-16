@@ -1,6 +1,6 @@
 # 列表
 
-<u>列表（list）</u>是一个抽象的数据结构概念，它表示元素的有序集合，支持元素访问、修改、添加、删除和遍历等操作，无须使用者考虑容量限制的问题。列表可以基于链表或数组实现。
+<u>列表（list）</u>是一个抽象的数据结构概念，它表示元素的*有序*集合，支持元素访问、修改、添加、删除和遍历等操作，无须使用者考虑容量限制的问题。列表可以基于链表或数组实现。
 
 - 链表天然可以看作一个列表，其支持元素增删查改操作，并且可以灵活动态扩容。
 - 数组也支持元素增删查改，但由于其长度不可变，因此只能看作一个具有长度限制的列表。
@@ -9,7 +9,7 @@
 
 为解决此问题，我们可以使用<u>动态数组（dynamic array）</u>来实现列表。它继承了数组的各项优点，并且可以在程序运行过程中进行动态扩容。
 
-实际上，**许多编程语言中的标准库提供的列表是基于动态数组实现的**，例如 Python 中的 `list` 、Java 中的 `ArrayList` 、C++ 中的 `vector` 和 C# 中的 `List` 等。在接下来的讨论中，我们将把“列表”和“动态数组”视为等同的概念。
+实际上，**许多编程语言中的标准库提供的列表是基于动态数组实现的**，例如 Python 中的 `list` 、Java 中的 `ArrayList` 、C++ 中的 `vector` 和 C# 中的 `List` 等。在接下来的讨论中，我们将把“*列表*”和“*动态数组*”视为等同的概念。
 
 ## 列表常用操作
 
@@ -169,7 +169,7 @@
     ```python title="list.py"
     # 访问元素
     num: int = nums[1]  # 访问索引 1 处的元素
-
+    
     # 更新元素
     nums[1] = 0    # 将索引 1 处的元素更新为 0
     ```
@@ -179,7 +179,7 @@
     ```cpp title="list.cpp"
     /* 访问元素 */
     int num = nums[1];  // 访问索引 1 处的元素
-
+    
     /* 更新元素 */
     nums[1] = 0;  // 将索引 1 处的元素更新为 0
     ```
@@ -189,7 +189,7 @@
     ```java title="list.java"
     /* 访问元素 */
     int num = nums.get(1);  // 访问索引 1 处的元素
-
+    
     /* 更新元素 */
     nums.set(1, 0);  // 将索引 1 处的元素更新为 0
     ```
@@ -199,7 +199,7 @@
     ```csharp title="list.cs"
     /* 访问元素 */
     int num = nums[1];  // 访问索引 1 处的元素
-
+    
     /* 更新元素 */
     nums[1] = 0;  // 将索引 1 处的元素更新为 0
     ```
@@ -209,7 +209,7 @@
     ```go title="list_test.go"
     /* 访问元素 */
     num := nums[1]  // 访问索引 1 处的元素
-
+    
     /* 更新元素 */
     nums[1] = 0     // 将索引 1 处的元素更新为 0
     ```
@@ -219,7 +219,7 @@
     ```swift title="list.swift"
     /* 访问元素 */
     let num = nums[1] // 访问索引 1 处的元素
-
+    
     /* 更新元素 */
     nums[1] = 0 // 将索引 1 处的元素更新为 0
     ```
@@ -229,7 +229,7 @@
     ```javascript title="list.js"
     /* 访问元素 */
     const num = nums[1];  // 访问索引 1 处的元素
-
+    
     /* 更新元素 */
     nums[1] = 0;  // 将索引 1 处的元素更新为 0
     ```
@@ -239,7 +239,7 @@
     ```typescript title="list.ts"
     /* 访问元素 */
     const num: number = nums[1];  // 访问索引 1 处的元素
-
+    
     /* 更新元素 */
     nums[1] = 0;  // 将索引 1 处的元素更新为 0
     ```
@@ -249,7 +249,7 @@
     ```dart title="list.dart"
     /* 访问元素 */
     int num = nums[1];  // 访问索引 1 处的元素
-
+    
     /* 更新元素 */
     nums[1] = 0;  // 将索引 1 处的元素更新为 0
     ```
@@ -292,7 +292,7 @@
     ```zig title="list.zig"
     // 访问元素
     var num = nums.items[1]; // 访问索引 1 处的元素
-
+    
     // 更新元素
     nums.items[1] = 0; // 将索引 1 处的元素更新为 0
     ```
@@ -310,17 +310,17 @@
     ```python title="list.py"
     # 清空列表
     nums.clear()
-
+    
     # 在尾部添加元素
     nums.append(1)
     nums.append(3)
     nums.append(2)
     nums.append(5)
     nums.append(4)
-
+    
     # 在中间插入元素
     nums.insert(3, 6)  # 在索引 3 处插入数字 6
-
+    
     # 删除元素
     nums.pop(3)        # 删除索引 3 处的元素
     ```
@@ -330,17 +330,17 @@
     ```cpp title="list.cpp"
     /* 清空列表 */
     nums.clear();
-
+    
     /* 在尾部添加元素 */
     nums.push_back(1);
     nums.push_back(3);
     nums.push_back(2);
     nums.push_back(5);
     nums.push_back(4);
-
+    
     /* 在中间插入元素 */
     nums.insert(nums.begin() + 3, 6);  // 在索引 3 处插入数字 6
-
+    
     /* 删除元素 */
     nums.erase(nums.begin() + 3);      // 删除索引 3 处的元素
     ```
@@ -350,17 +350,17 @@
     ```java title="list.java"
     /* 清空列表 */
     nums.clear();
-
+    
     /* 在尾部添加元素 */
     nums.add(1);
     nums.add(3);
     nums.add(2);
     nums.add(5);
     nums.add(4);
-
+    
     /* 在中间插入元素 */
     nums.add(3, 6);  // 在索引 3 处插入数字 6
-
+    
     /* 删除元素 */
     nums.remove(3);  // 删除索引 3 处的元素
     ```
@@ -370,17 +370,17 @@
     ```csharp title="list.cs"
     /* 清空列表 */
     nums.Clear();
-
+    
     /* 在尾部添加元素 */
     nums.Add(1);
     nums.Add(3);
     nums.Add(2);
     nums.Add(5);
     nums.Add(4);
-
+    
     /* 在中间插入元素 */
     nums.Insert(3, 6);  // 在索引 3 处插入数字 6
-
+    
     /* 删除元素 */
     nums.RemoveAt(3);  // 删除索引 3 处的元素
     ```
@@ -390,17 +390,17 @@
     ```go title="list_test.go"
     /* 清空列表 */
     nums = nil
-
+    
     /* 在尾部添加元素 */
     nums = append(nums, 1)
     nums = append(nums, 3)
     nums = append(nums, 2)
     nums = append(nums, 5)
     nums = append(nums, 4)
-
+    
     /* 在中间插入元素 */
     nums = append(nums[:3], append([]int{6}, nums[3:]...)...) // 在索引 3 处插入数字 6
-
+    
     /* 删除元素 */
     nums = append(nums[:3], nums[4:]...) // 删除索引 3 处的元素
     ```
@@ -410,17 +410,17 @@
     ```swift title="list.swift"
     /* 清空列表 */
     nums.removeAll()
-
+    
     /* 在尾部添加元素 */
     nums.append(1)
     nums.append(3)
     nums.append(2)
     nums.append(5)
     nums.append(4)
-
+    
     /* 在中间插入元素 */
     nums.insert(6, at: 3) // 在索引 3 处插入数字 6
-
+    
     /* 删除元素 */
     nums.remove(at: 3) // 删除索引 3 处的元素
     ```
@@ -430,17 +430,17 @@
     ```javascript title="list.js"
     /* 清空列表 */
     nums.length = 0;
-
+    
     /* 在尾部添加元素 */
     nums.push(1);
     nums.push(3);
     nums.push(2);
     nums.push(5);
     nums.push(4);
-
+    
     /* 在中间插入元素 */
     nums.splice(3, 0, 6); // 在索引 3 处插入数字 6
-
+    
     /* 删除元素 */
     nums.splice(3, 1);  // 删除索引 3 处的元素
     ```
@@ -450,17 +450,17 @@
     ```typescript title="list.ts"
     /* 清空列表 */
     nums.length = 0;
-
+    
     /* 在尾部添加元素 */
     nums.push(1);
     nums.push(3);
     nums.push(2);
     nums.push(5);
     nums.push(4);
-
+    
     /* 在中间插入元素 */
     nums.splice(3, 0, 6); // 在索引 3 处插入数字 6
-
+    
     /* 删除元素 */
     nums.splice(3, 1);  // 删除索引 3 处的元素
     ```
@@ -470,17 +470,17 @@
     ```dart title="list.dart"
     /* 清空列表 */
     nums.clear();
-
+    
     /* 在尾部添加元素 */
     nums.add(1);
     nums.add(3);
     nums.add(2);
     nums.add(5);
     nums.add(4);
-
+    
     /* 在中间插入元素 */
     nums.insert(3, 6); // 在索引 3 处插入数字 6
-
+    
     /* 删除元素 */
     nums.removeAt(3); // 删除索引 3 处的元素
     ```
@@ -490,17 +490,17 @@
     ```rust title="list.rs"
     /* 清空列表 */
     nums.clear();
-
+    
     /* 在尾部添加元素 */
     nums.push(1);
     nums.push(3);
     nums.push(2);
     nums.push(5);
     nums.push(4);
-
+    
     /* 在中间插入元素 */
     nums.insert(3, 6);  // 在索引 3 处插入数字 6
-
+    
     /* 删除元素 */
     nums.remove(3);    // 删除索引 3 处的元素
     ```
@@ -516,17 +516,17 @@
     ```kotlin title="list.kt"
     /* 清空列表 */
     nums.clear();
-
+    
     /* 在尾部添加元素 */
     nums.add(1);
     nums.add(3);
     nums.add(2);
     nums.add(5);
     nums.add(4);
-
+    
     /* 在中间插入元素 */
     nums.add(3, 6);  // 在索引 3 处插入数字 6
-
+    
     /* 删除元素 */
     nums.remove(3);  // 删除索引 3 处的元素
     ```
@@ -536,17 +536,17 @@
     ```ruby title="list.rb"
     # 清空列表
     nums.clear
-
+    
     # 在尾部添加元素
     nums << 1
     nums << 3
     nums << 2
     nums << 5
     nums << 4
-
+    
     # 在中间插入元素
     nums.insert(3, 6) # 在索引 3 处插入数字 6
-
+    
     # 删除元素
     nums.delete_at(3) # 删除索引 3 处的元素
     ```
@@ -556,17 +556,17 @@
     ```zig title="list.zig"
     // 清空列表
     nums.clearRetainingCapacity();
-
+    
     // 在尾部添加元素
     try nums.append(1);
     try nums.append(3);
     try nums.append(2);
     try nums.append(5);
     try nums.append(4);
-
+    
     // 在中间插入元素
     try nums.insert(3, 6); // 在索引 3 处插入数字 6
-
+    
     // 删除元素
     _ = nums.orderedRemove(3); // 删除索引 3 处的元素
     ```
@@ -586,7 +586,7 @@
     count = 0
     for i in range(len(nums)):
         count += nums[i]
-
+    
     # 直接遍历列表元素
     for num in nums:
         count += num
@@ -600,7 +600,7 @@
     for (int i = 0; i < nums.size(); i++) {
         count += nums[i];
     }
-
+    
     /* 直接遍历列表元素 */
     count = 0;
     for (int num : nums) {
@@ -616,7 +616,7 @@
     for (int i = 0; i < nums.size(); i++) {
         count += nums.get(i);
     }
-
+    
     /* 直接遍历列表元素 */
     for (int num : nums) {
         count += num;
@@ -631,7 +631,7 @@
     for (int i = 0; i < nums.Count; i++) {
         count += nums[i];
     }
-
+    
     /* 直接遍历列表元素 */
     count = 0;
     foreach (int num in nums) {
@@ -647,7 +647,7 @@
     for i := 0; i < len(nums); i++ {
         count += nums[i]
     }
-
+    
     /* 直接遍历列表元素 */
     count = 0
     for _, num := range nums {
@@ -663,7 +663,7 @@
     for i in nums.indices {
         count += nums[i]
     }
-
+    
     /* 直接遍历列表元素 */
     count = 0
     for num in nums {
@@ -679,7 +679,7 @@
     for (let i = 0; i < nums.length; i++) {
         count += nums[i];
     }
-
+    
     /* 直接遍历列表元素 */
     count = 0;
     for (const num of nums) {
@@ -695,7 +695,7 @@
     for (let i = 0; i < nums.length; i++) {
         count += nums[i];
     }
-
+    
     /* 直接遍历列表元素 */
     count = 0;
     for (const num of nums) {
@@ -711,7 +711,7 @@
     for (var i = 0; i < nums.length; i++) {
         count += nums[i];
     }
-
+    
     /* 直接遍历列表元素 */
     count = 0;
     for (var num in nums) {
@@ -727,7 +727,7 @@
     for i in 0..nums.len() {
         _count += nums[i];
     }
-
+    
     // 直接遍历列表元素
     _count = 0;
     for num in &nums {
@@ -749,7 +749,7 @@
     for (i in nums.indices) {
         count += nums[i]
     }
-
+    
     /* 直接遍历列表元素 */
     for (num in nums) {
         count += num
@@ -764,7 +764,7 @@
     for i in 0...nums.length
         count += nums[i]
     end
-
+    
     # 直接遍历列表元素
     count = 0
     for num in nums
@@ -781,7 +781,7 @@
     while (i < nums.items.len) : (i += 1) {
         count += nums[i];
     }
-
+    
     // 直接遍历列表元素
     count = 0;
     for (nums.items) |num| {

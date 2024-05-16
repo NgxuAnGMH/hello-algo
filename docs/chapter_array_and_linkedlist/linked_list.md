@@ -2,7 +2,7 @@
 
 内存空间是所有程序的公共资源，在一个复杂的系统运行环境下，空闲的内存空间可能散落在内存各处。我们知道，存储数组的内存空间必须是连续的，而当数组非常大时，内存可能无法提供如此大的连续空间。此时链表的灵活性优势就体现出来了。
 
-<u>链表（linked list）</u>是一种线性数据结构，其中的每个元素都是一个节点对象，各个节点通过“引用”相连接。引用记录了下一个节点的内存地址，通过它可以从当前节点访问到下一个节点。
+<u>链表（linked list）</u>是一种线性数据结构，其中的每个元素都是==一个节点对象==，各个节点通过“**引用**”相连接。引用记录了**下一个节点的内存地址**，通过它可以从当前节点访问到下一个节点。
 
 链表的设计使得各个节点可以分散存储在内存各处，它们的内存地址无须连续。
 
@@ -12,7 +12,7 @@
 
 - 链表的首个节点被称为“头节点”，最后一个节点被称为“尾节点”。
 - 尾节点指向的是“空”，它在 Java、C++ 和 Python 中分别被记为 `null`、`nullptr` 和 `None` 。
-- 在 C、C++、Go 和 Rust 等支持指针的语言中，上述“引用”应被替换为“指针”。
+- 在 C、C++、Go 和 Rust *等支持指针的语言中*，上述“引用”应被替换为“**指针**”。
 
 如以下代码所示，链表节点 `ListNode` 除了包含值，还需额外保存一个引用（指针）。因此在相同数据量下，**链表比数组占用更多的内存空间**。
 
@@ -66,7 +66,7 @@
         Val  int       // 节点值
         Next *ListNode // 指向下一节点的指针
     }
-
+    
     // NewListNode 构造函数，创建一个新的链表
     func NewListNode(val int) *ListNode {
         return &ListNode{
@@ -83,7 +83,7 @@
     class ListNode {
         var val: Int // 节点值
         var next: ListNode? // 指向下一节点的引用
-
+    
         init(x: Int) { // 构造函数
             val = x
         }
@@ -148,7 +148,7 @@
         int val;               // 节点值
         struct ListNode *next; // 指向下一节点的指针
     } ListNode;
-
+    
     /* 构造函数 */
     ListNode *newListNode(int val) {
         ListNode *node;
@@ -177,7 +177,7 @@
     class ListNode
       attr_accessor :val  # 节点值
       attr_accessor :next # 指向下一节点的引用
-
+    
       def initialize(val=0, next_node=nil)
         @val = val
         @next = next_node
@@ -192,10 +192,10 @@
     pub fn ListNode(comptime T: type) type {
         return struct {
             const Self = @This();
-
+    
             val: T = 0, // 节点值
             next: ?*Self = null, // 指向下一节点的指针
-
+    
             // 构造函数
             pub fn init(self: *Self, x: i32) void {
                 self.val = x;
@@ -209,7 +209,12 @@
 
 ### 初始化链表
 
-建立链表分为两步，第一步是初始化各个节点对象，第二步是构建节点之间的引用关系。初始化完成后，我们就可以从链表的头节点出发，通过引用指向 `next` 依次访问所有节点。
+建立链表**分为两步**，
+
+1. 第一步是初始化各个节点对象，
+2. 第二步是构建节点之间的引用关系。
+
+初始化完成后，我们就可以从链表的头节点出发，通过引用指向 `next` 依次访问所有节点。
 
 === "Python"
 
@@ -374,7 +379,7 @@
     let n2 = Rc::new(RefCell::new(ListNode { val: 2, next: None }));
     let n3 = Rc::new(RefCell::new(ListNode { val: 5, next: None }));
     let n4 = Rc::new(RefCell::new(ListNode { val: 4, next: None }));
-
+    
     // 构建节点之间的引用
     n0.borrow_mut().next = Some(n1.clone());
     n1.borrow_mut().next = Some(n2.clone());
@@ -454,7 +459,7 @@
 
     https://pythontutor.com/render.html#code=class%20ListNode%3A%0A%20%20%20%20%22%22%22%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9%E7%B1%BB%22%22%22%0A%20%20%20%20def%20__init__%28self,%20val%3A%20int%29%3A%0A%20%20%20%20%20%20%20%20self.val%3A%20int%20%3D%20val%20%20%23%20%E8%8A%82%E7%82%B9%E5%80%BC%0A%20%20%20%20%20%20%20%20self.next%3A%20ListNode%20%7C%20None%20%3D%20None%20%20%23%20%E5%90%8E%E7%BB%A7%E8%8A%82%E7%82%B9%E5%BC%95%E7%94%A8%0A%0A%22%22%22Driver%20Code%22%22%22%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20%23%20%E5%88%9D%E5%A7%8B%E5%8C%96%E9%93%BE%E8%A1%A8%201%20-%3E%203%20-%3E%202%20-%3E%205%20-%3E%204%0A%20%20%20%20%23%20%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%84%E4%B8%AA%E8%8A%82%E7%82%B9%0A%20%20%20%20n0%20%3D%20ListNode%281%29%0A%20%20%20%20n1%20%3D%20ListNode%283%29%0A%20%20%20%20n2%20%3D%20ListNode%282%29%0A%20%20%20%20n3%20%3D%20ListNode%285%29%0A%20%20%20%20n4%20%3D%20ListNode%284%29%0A%20%20%20%20%23%20%E6%9E%84%E5%BB%BA%E8%8A%82%E7%82%B9%E4%B9%8B%E9%97%B4%E7%9A%84%E5%BC%95%E7%94%A8%0A%20%20%20%20n0.next%20%3D%20n1%0A%20%20%20%20n1.next%20%3D%20n2%0A%20%20%20%20n2.next%20%3D%20n3%0A%20%20%20%20n3.next%20%3D%20n4&cumulative=false&curInstr=3&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false
 
-数组整体是一个变量，比如数组 `nums` 包含元素 `nums[0]` 和 `nums[1]` 等，而链表是由多个独立的节点对象组成的。**我们通常将头节点当作链表的代称**，比如以上代码中的链表可记作链表 `n0` 。
+数组整体是一个变量，比如数组 `nums` 包含元素 `nums[0]` 和 `nums[1]` 等，而链表是由多个独立的节点对象组成的。**我们通常将==头节点==当作链表的代称**，比如以上代码中的链表可记作链表 `n0` 。
 
 ### 插入节点
 
@@ -574,7 +579,7 @@
         Next *DoublyListNode // 指向后继节点的指针
         Prev *DoublyListNode // 指向前驱节点的指针
     }
-
+    
     // NewDoublyListNode 初始化
     func NewDoublyListNode(val int) *DoublyListNode {
         return &DoublyListNode{
@@ -593,7 +598,7 @@
         var val: Int // 节点值
         var next: ListNode? // 指向后继节点的引用
         var prev: ListNode? // 指向前驱节点的引用
-
+    
         init(x: Int) { // 构造函数
             val = x
         }
@@ -646,7 +651,7 @@
     ```rust title=""
     use std::rc::Rc;
     use std::cell::RefCell;
-
+    
     /* 双向链表节点类型 */
     #[derive(Debug)]
     struct ListNode {
@@ -654,7 +659,7 @@
         next: Option<Rc<RefCell<ListNode>>>, // 指向后继节点的指针
         prev: Option<Rc<RefCell<ListNode>>>, // 指向前驱节点的指针
     }
-
+    
     /* 构造函数 */
     impl ListNode {
         fn new(val: i32) -> Self {
@@ -676,7 +681,7 @@
         struct ListNode *next; // 指向后继节点的指针
         struct ListNode *prev; // 指向前驱节点的指针
     } ListNode;
-
+    
     /* 构造函数 */
     ListNode *newListNode(int val) {
         ListNode *node;
@@ -708,7 +713,7 @@
       attr_accessor :val    # 节点值
       attr_accessor :next   # 指向后继节点的引用
       attr_accessor :prev   # 指向前驱节点的引用
-
+    
       def initialize(val=0, next_node=nil, prev_node=nil)
         @val = val
         @next = next_node
@@ -724,11 +729,11 @@
     pub fn ListNode(comptime T: type) type {
         return struct {
             const Self = @This();
-
+    
             val: T = 0, // 节点值
             next: ?*Self = null, // 指向后继节点的指针
             prev: ?*Self = null, // 指向前驱节点的指针
-
+    
             // 构造函数
             pub fn init(self: *Self, x: i32) void {
                 self.val = x;
@@ -745,9 +750,12 @@
 
 单向链表通常用于实现栈、队列、哈希表和图等数据结构。
 
-- **栈与队列**：当插入和删除操作都在链表的一端进行时，它表现的特性为先进后出，对应栈；当插入操作在链表的一端进行，删除操作在链表的另一端进行，它表现的特性为先进先出，对应队列。
-- **哈希表**：链式地址是解决哈希冲突的主流方案之一，在该方案中，所有冲突的元素都会被放到一个链表中。
-- **图**：邻接表是表示图的一种常用方式，其中图的每个顶点都与一个链表相关联，链表中的每个元素都代表与该顶点相连的其他顶点。
+- **栈与队列**：
+  - 当插入和删除操作都在链表的一端进行时，它表现的特性为先进后出，对应==栈==；
+  - 当插入操作在链表的一端进行，删除操作在链表的另一端进行，它表现的特性为先进先出，对应==队列==。
+
+- **哈希表**：链式地址是解决哈希冲突的主流方案之一，在该方案中，*所有冲突的元素*都会被放到==一个链表==中。
+- **图**：邻接表是表示图的一种常用方式，其中图的==每个顶点==都与==一个链表==相关联，链表中的每个元素都代表与该顶点相连的其他顶点。
 
 双向链表常用于需要快速查找前一个和后一个元素的场景。
 
@@ -755,7 +763,25 @@
 - **浏览器历史**：在网页浏览器中，当用户点击前进或后退按钮时，浏览器需要知道用户访问过的前一个和后一个网页。双向链表的特性使得这种操作变得简单。
 - **LRU 算法**：在缓存淘汰（LRU）算法中，我们需要快速找到最近最少使用的数据，以及支持快速添加和删除节点。这时候使用双向链表就非常合适。
 
-环形链表常用于需要周期性操作的场景，比如操作系统的资源调度。
+环形链表常用于需要<u>周期性操作</u>的场景，比如操作系统的资源调度。
 
 - **时间片轮转调度算法**：在操作系统中，时间片轮转调度算法是一种常见的 CPU 调度算法，它需要对一组进程进行循环。每个进程被赋予一个时间片，当时间片用完时，CPU 将切换到下一个进程。这种循环操作可以通过环形链表来实现。
 - **数据缓冲区**：在某些数据缓冲区的实现中，也可能会使用环形链表。比如在音频、视频播放器中，数据流可能会被分成多个缓冲块并放入一个环形链表，以便实现无缝播放。
+
+---
+
+
+
+```
+```
+
+
+
+
+
+
+
+
+
+
+
